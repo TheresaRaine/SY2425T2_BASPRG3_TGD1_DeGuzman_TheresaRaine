@@ -1,21 +1,23 @@
 #pragma once
 #include "GameObject.h"
+#include "GameObject.h"
 #include "common.h"
 #include "draw.h"
-#include "SoundManager.h"
-#include "Bullet.h"
-#include "Scene.h"
 
-
-
-class Player : public GameObject
+class Bullet :
+    public GameObject
 {
 public:
-	~Player();
+	Bullet(int positionX, int positionY, float directionX, float directionY, int speed);
 	void start();
 	void update();
 	void draw();
-	
+	int getPositionX();
+	int getPositionY();
+	int getWidth();
+	int getHeight();
+
+
 private:
 	int x;
 	int y;
@@ -27,12 +29,9 @@ private:
 	int LowSpeed;
 
 
-	float reloadTime;
-	float currentreloadTime;
-
 	SDL_Texture* texture;
-	Mix_Chunk* sound;
 
-	std::vector<Bullet*> bullets;
+	float directionX;
+	float directionY;
 };
 
